@@ -59,21 +59,21 @@ button {
     height: 25px;
     margin-bottom: 20px;
     padding: 5px;
-}
 
-.progress--big {
-    height: 50px;
-}
-
-.progress--color-red {
-    border-color: orangered;
-}
-
-.Progress__bar {
-    height: 100%;
-    background-color: black;
-}
-
-.progress--color-red, .Progress__bar {
-    background-color: orangered;
+    &--big {
+        height: 50px;
+    }
+    
+    &--color-red {
+        border-color: orangered;
+    }
+    
+    &__bar {
+        height: 100%;
+        background-color: black;
+    }
+    
+    &--color-red, &__bar {
+        background-color: orangered;
+    }
 }
