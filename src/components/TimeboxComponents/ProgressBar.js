@@ -1,6 +1,13 @@
-function ProgressBar({className= "", percent = "50"}) {
+function ProgressBar({className= "", percent = 33, big=false, color = null }) {
+    let progressClassName = `progress ${className}`
+    if (big) {
+        progressClassName += " progress--big"
+    }
+    if (color === "red") {
+        progressClassName += " progress--color-red"
+    }
     return (
-        <div className={`progress progress--big progress--color-red ${className}`}>
+        <div className={progressClassName}>
             <div className="progress__bar" style={{width: `${percent}%`}}></div>
         </div>
     )
