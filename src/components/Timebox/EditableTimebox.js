@@ -31,6 +31,7 @@ class EditableTimebox extends React.Component {
                     isEditable={isEditable}
                     onTitleChange={this.handleTitleChange}
                     onTotalTimeInMinutesChange={this.handleTotalTimeInMinutesChange}
+                    onConfirm={this.handleConfirm}
                 />
                 <CurrentTimebox 
                     isEditable={isEditable}

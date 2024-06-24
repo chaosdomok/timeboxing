@@ -5,7 +5,7 @@ function TimeboxEditor(props) {
         isEditable,
         onTitleChange,
         onTotalTimeInMinutesChange,
-        onConfirmChange,
+        onConfirm,
     } = props;
     return (
         <div className={`TimeboxEditor ${isEditable ? "" : "inactive"}`}>
@@ -28,7 +28,7 @@ function TimeboxEditor(props) {
                 />
             </label><br />
             <button 
-                onClick={onConfirmChange}
+                onClick={onConfirm}
                 disabled={false}
             >Zatwierdź zmiany</button>
         </div>
