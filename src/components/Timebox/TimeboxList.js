@@ -2,6 +2,7 @@ import React from "react";
 
 import TimeboxCreator from "./TimeboxCreator";
 import Timebox from "./Timebox";
+import Error from "./Error";
 
 class TimeboxList extends React.Component {
     state = {
@@ -9,7 +10,8 @@ class TimeboxList extends React.Component {
             {  id: "a", title: "Uczę się list", totalTimeInMinutes: 25},
             {  id: "b", title: "Uczę się formularzy", totalTimeInMinutes: 15},
             {  id: "c", title: "Uczę się komponentów", totalTimeInMinutes: 5},
-        ]
+        ],
+        hasError: false
     }
 
     addTimebox = (timebox) => {
@@ -34,21 +36,28 @@ class TimeboxList extends React.Component {
     }
 
     handleCreate = (createdTimebox) => {
-        this.addTimebox(createdTimebox);
+        try {
+            this.addTimebox(createdTimebox);
+        } catch(error) {
+            console.log("Jest błąd przy tworzeniu timeboxa: ", error)
+        }
     }
     render() {
         return (
             <div className="App">
                 <TimeboxCreator onCreate={this.handleCreate} />
-                {this.state.timeboxes.map((timebox, index) => (
-                    <Timebox 
-                        key={timebox.id} 
-                        title={timebox.title}  
-                        totalTimeInMinutes={timebox.totalTimeInMinutes} 
-                        onDelete={() => this.removeTimebox(index)}
-                        onEdit={() => this.updateTimebox(index, {...timebox, title: "updated timebox"})}
-                    />
-                ))}
+                <Error message="Coś się wykrzaczyło w liście :("/>
+                {
+                    this.state.timeboxes.map((timebox, index) => (
+                        <Timebox 
+                            key={timebox.id} 
+                            title={timebox.title}  
+                            totalTimeInMinutes={timebox.totalTimeInMinutes} 
+                            onDelete={() => this.removeTimebox(index)}
+                            onEdit={() => this.updateTimebox(index, {...timebox, title: "updated timebox"})}
+                        />
+                    ))
+                }
             </div>
         )
     }
